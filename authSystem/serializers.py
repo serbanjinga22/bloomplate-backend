@@ -20,7 +20,7 @@ class RegisterSerializer(ModelSerializer):
         fields = ('username', 'email', 'password', 'gender', 'age', 'kilograms', 'foodPreferences', 'mainObjective', 'generalMood', 'digestion', 'hormonal', 'intolerancies', 'excludeFoods', 'excludedFoods', 'noPeople', 'weeklyBudget', 'duration', 'weeklyFood', 'dailySchedule', 'lactoseFree', 'glutenFree', 'antiStress', 'energyLevelHigher', 'antiBloating', 'antiConstipation', 'improvementPCOS', 'improvementEndometriosis')
 
         def create(self, validated_data):
-            user = User.objects.create(**validated_data)
+            user = User.objects.create_user(**validated_data)
             return user
         
 class LoginSerializer(serializers.Serializer):
