@@ -48,6 +48,7 @@ class Meal(models.Model):
     dayOfTheWeek = models.CharField(max_length=100, default='Luni', choices=week_choices)
     image = models.ImageField(upload_to='images/', default='images/None/no-img.jpg')
     ingredient = models.ManyToManyField(Ingredient)
+    weekNumber = models.IntegerField(default=1, blank=False)
 
     def __str__(self):
         return self.title

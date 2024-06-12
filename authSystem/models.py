@@ -116,23 +116,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-      # Dynamic boolean fields based on choices in the Meal model
-    MEAL_CHOICES_MAPPING = {
-        'lactoseFree': [("Fără lactoză", True)],
-        'glutenFree': [("Fără gluten", True)],
-        'antiStress': [("Anti-Stres", True)],
-        'energyLevelHigher': [("Nivel de energie mai ridicat", True)],
-        'antiBloating': [("Anti-Balonare", True)],
-        'antiConstipation': [("Anti-Constipație", True)],
-        'improvementPCOS': [("Îmbunătățire simptome ovare polichistice", True)],
-        'improvementEndometriosis': [("Îmbunătățire simptome endometrioză", True)],
-    }
-    
-    # Iterate over the choices and dynamically generate the boolean fields
-    for field, choices in MEAL_CHOICES_MAPPING.items():
-        for choice, _ in choices:
-            locals()[field] = models.BooleanField(default=False)
-
+    lactoseFree = models.BooleanField(default=False)
+    glutenFree = models.BooleanField(default=False)
+    antiStress = models.BooleanField(default=False)
+    energyLevelHigher = models.BooleanField(default=False)
+    antiBloating = models.BooleanField(default=False)
+    antiConstipation = models.BooleanField(default=False)
+    improvementPCOS = models.BooleanField(default=False)
+    improvementEndometriosis = models.BooleanField(default=False)
 
     objects = CustomUserManager()
 

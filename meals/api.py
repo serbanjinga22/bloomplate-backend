@@ -16,11 +16,14 @@ class MealDetail(generics.RetrieveAPIView):
     queryset = Meal.objects.all()
     serializer_class = MealSerializer
 
+from django.utils import timezone
+
 class MealMatchUser(generics.ListAPIView):
     serializer_class = MealSerializer
 
     def get_queryset(self):
         user = User.objects.get(id=self.kwargs['user_id'])
+        weeks_since_creation = max(1, (timezone.now() - user.date_joined).days // 7)
         return Meal.objects.filter(
             lactoseFree=user.lactoseFree,
             glutenFree=user.glutenFree,
@@ -29,7 +32,8 @@ class MealMatchUser(generics.ListAPIView):
             antiBloating=user.antiBloating,
             antiConstipation=user.antiConstipation,
             improvementPCOS=user.improvementPCOS,
-            improvementEndometriosis=user.improvementEndometriosis
+            improvementEndometriosis=user.improvementEndometriosis,
+            week_number=weeks_since_creation
         )
     
 class IngredientTotals(APIView):
