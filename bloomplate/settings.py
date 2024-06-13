@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'meals',
     'ingredients',
+    'shoppingList',
     'knox'
 ]
 
