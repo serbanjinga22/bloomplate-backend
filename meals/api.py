@@ -33,7 +33,7 @@ class MealMatchUser(generics.ListAPIView):
             antiConstipation=user.antiConstipation,
             improvementPCOS=user.improvementPCOS,
             improvementEndometriosis=user.improvementEndometriosis,
-            week_number=weeks_since_creation
+            weekNumber=weeks_since_creation
         )
     
 class IngredientTotals(APIView):
