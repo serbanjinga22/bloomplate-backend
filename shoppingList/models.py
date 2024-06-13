@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class ShoppingList(models.Model):
-    shoppingList = models.CharField(max_length=2000, blank=True, default='')
+    shoppingList = models.TextField(max_length=2000, blank=True, default='')
     lactoseFree = models.BooleanField(default=False)
     glutenFree = models.BooleanField(default=False)
     antiStress = models.BooleanField(default=False)
